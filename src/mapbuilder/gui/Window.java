@@ -1,8 +1,3 @@
-
-// Title: Window.java
-// Author: Kevin Nard
-// Main container for UI elements
-
 package mapbuilder.gui;
 
 import javax.swing.*;
@@ -12,7 +7,7 @@ public class Window extends JFrame {
 
     // Construct a new window
     public Window() {
-        setTitle("New Main");
+        setTitle("New Window");
         setPreferredSize(new Dimension(Theme.WINDOW_WIDTH, Theme.WINDOW_HEIGHT));
         setMinimumSize(new Dimension(Theme.WINDOW_WIDTH, Theme.WINDOW_HEIGHT));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -33,9 +28,11 @@ public class Window extends JFrame {
     }
 
     public static void main(String[] args) {
-
         Window window = new Window("Dungeons and Dragons Map Builder");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        window.add(new Canvas());
+
         window.pack();
         window.setVisible(true);
     }

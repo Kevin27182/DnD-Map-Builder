@@ -1,9 +1,3 @@
-
-
-// Title: Theme.java
-// Author: Kevin Nard
-// Static constants for UI theme
-
 package mapbuilder.gui;
 
 import java.awt.*;
@@ -14,6 +8,7 @@ class Theme {
     public static final Color LIGHT_BACKGROUND_2 = new Color(0xdfe4ea);
     public static final Color LIGHT_BACKGROUND_3 = new Color(0xf1f2f6);
     public static final Color LIGHT_BACKGROUND_4 = new Color(0xffffff);
+    public static final Color DARK_BACKGROUND_0 = new Color(0x242730);
     public static final Color DARK_BACKGROUND_1 = new Color(0x2f3542);
     public static final Color DARK_BACKGROUND_2 = new Color(0x57606f);
     public static final Color DARK_BACKGROUND_3 = new Color(0x747d8c);
@@ -35,8 +30,12 @@ class Theme {
     public static final Color PURPLE = new Color(0x7B2FE8);
     public static final Color MAGENTA = new Color(0x9D5BB6);
     public static final String WINDOW_TITLE = "Wine Data Analysis";
-    public static final int WINDOW_WIDTH = 1200;
-    public static final int WINDOW_HEIGHT = 800;
+    public static final int WINDOW_WIDTH = 1560;
+    public static final int WINDOW_HEIGHT = 1040;
     public static final int DEFAULT_PADDING = 10;
+    public static final int TOOLBAR_BUTTON_WIDTH = 40;
+    public static final int TOOLBAR_BUTTON_HEIGHT = 40;
+    public static final int GRID_WIDTH = (WINDOW_WIDTH / 100) * 3;
+    public static final int GRID_HEIGHT = (WINDOW_HEIGHT / 100) * 3;
     public static final Insets DEFAULT_INSETS = new Insets(DEFAULT_PADDING, DEFAULT_PADDING, DEFAULT_PADDING, DEFAULT_PADDING);
 }

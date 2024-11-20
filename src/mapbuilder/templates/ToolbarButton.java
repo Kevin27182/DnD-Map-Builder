@@ -28,13 +28,13 @@ public abstract class ToolbarButton extends IconButton {
     }
 
     private void toggleListeners() {
-        if (listener.getSelectionActive()) {
-            listener.deactivateListeners();
-            listener.setSelectionActive(false);
-        } else {
+        if (!listener.getSelectionActive() | listener.getCurrentButton() != this) {
             listener.setCurrentButton(this);
             listener.activateListeners();
             listener.setSelectionActive(true);
+        } else {
+            listener.deactivateListeners();
+            listener.setSelectionActive(false);
         }
     }
 }

@@ -62,6 +62,11 @@ public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridP
     }
 
     @Override
+    public ToolbarButton getCurrentButton() {
+        return this.currentButton;
+    }
+
+    @Override
     public boolean getSelectionActive() {
         return selectionActive;
     }

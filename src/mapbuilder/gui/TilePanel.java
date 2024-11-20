@@ -1,5 +1,7 @@
 package mapbuilder.gui;
 
+import mapbuilder.templates.Entity;
+
 import javax.swing.*;
 
 public class TilePanel extends JPanel {

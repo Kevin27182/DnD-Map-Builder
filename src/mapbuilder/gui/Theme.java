@@ -2,7 +2,7 @@ package mapbuilder.gui;
 
 import java.awt.*;
 
-class Theme {
+public class Theme {
 
     public static final Color LIGHT_BACKGROUND_1 = new Color(0xced6e0);
     public static final Color LIGHT_BACKGROUND_2 = new Color(0xdfe4ea);
@@ -33,8 +33,10 @@ class Theme {
     public static final int WINDOW_WIDTH = 1560;
     public static final int WINDOW_HEIGHT = 1040;
     public static final int DEFAULT_PADDING = 10;
-    public static final int TOOLBAR_BUTTON_WIDTH = 40;
-    public static final int TOOLBAR_BUTTON_HEIGHT = 40;
+    public static final int TOOLBAR_BUTTON_WIDTH = 50;
+    public static final int TOOLBAR_BUTTON_HEIGHT = 50;
+    public static final int TOOLBAR_ICON_WIDTH = 40;
+    public static final int TOOLBAR_ICON_HEIGHT = 40;
     public static final int GRID_WIDTH = (WINDOW_WIDTH / 100) * 3;
     public static final int GRID_HEIGHT = (WINDOW_HEIGHT / 100) * 3;
     public static final Insets DEFAULT_INSETS = new Insets(DEFAULT_PADDING, DEFAULT_PADDING, DEFAULT_PADDING, DEFAULT_PADDING);

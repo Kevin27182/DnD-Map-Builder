@@ -1,9 +1,11 @@
-package mapbuilder.gui;
+package mapbuilder.templates;
+
+import mapbuilder.gui.Theme;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-public class Entity extends IconButton {
+public abstract class Entity extends IconButton {
 
     public Entity() {
         // Button press response

@@ -1,6 +1,7 @@
 package mapbuilder.templates;
 
 import mapbuilder.gui.Theme;
+import mapbuilder.gui.ToolbarButtonOverlay;
 import mapbuilder.helpers.ToolbarButtonListener;
 import javax.swing.*;
 import java.awt.*;
@@ -8,12 +9,14 @@ import java.awt.*;
 public abstract class ToolbarButton extends IconButton {
 
     private ToolbarButtonListener listener;
+    private final ToolbarButtonOverlay overlay = new ToolbarButtonOverlay();
 
     public ToolbarButton() {
         setPreferredSize(new Dimension(Theme.TOOLBAR_BUTTON_WIDTH, Theme.TOOLBAR_BUTTON_HEIGHT));
         setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
         setBackground(Theme.DARK_BACKGROUND_1);
         addActionListener(_ -> toggleListeners());
+        setLayout(new OverlayLayout(this));
     }
 
     // Scales the incoming icon appropriately before setting
@@ -28,7 +31,9 @@ public abstract class ToolbarButton extends IconButton {
     }
 
     private void toggleListeners() {
+        listener.disableOverlays();
         if (!listener.getSelectionActive() | listener.getCurrentButton() != this) {
+            enableOverlay();
             listener.setCurrentButton(this);
             listener.activateListeners();
             listener.setSelectionActive(true);
@@ -36,5 +41,15 @@ public abstract class ToolbarButton extends IconButton {
             listener.deactivateListeners();
             listener.setSelectionActive(false);
         }
+    }
+
+    public void enableOverlay() {
+        add(overlay);
+        repaint();
+        revalidate();
+    }
+
+    public void disableOverlay() {
+        remove(overlay);
     }
 }

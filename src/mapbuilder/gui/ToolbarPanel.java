@@ -48,6 +48,11 @@ public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridP
     }
 
     @Override
+    public void disableOverlays() {
+        bins.forEach(bin -> bin.forEach(ToolbarButton::disableOverlay));
+    }
+
+    @Override
     public void activateListeners() {
         listeners.forEach(ToolbarListener::activateSelection);
     }

@@ -9,4 +9,5 @@ public interface ToolbarButtonListener {
     ToolbarButton getCurrentButton();
     boolean getSelectionActive();
     void setSelectionActive(boolean selectionActive);
+    void disableOverlays();
 }

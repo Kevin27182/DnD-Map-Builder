@@ -1,4 +1,4 @@
-package mapbuilder.items;
+package mapbuilder.tools;
 
 import mapbuilder.templates.ToolbarButton;
 

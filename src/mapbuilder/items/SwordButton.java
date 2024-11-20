@@ -1,7 +1,6 @@
 package mapbuilder.items;
 
 import mapbuilder.templates.ToolbarButton;
-
 import javax.swing.*;
 
 public class SwordButton extends ToolbarButton {

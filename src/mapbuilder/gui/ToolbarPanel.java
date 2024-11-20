@@ -1,35 +1,81 @@
 package mapbuilder.gui;
 
+import mapbuilder.helpers.GridPanelListener;
+import mapbuilder.helpers.ToolbarButtonListener;
+import mapbuilder.helpers.ToolbarListener;
 import mapbuilder.items.EmptyButton;
 import mapbuilder.items.SwordButton;
 import mapbuilder.templates.ToolbarButton;
+import mapbuilder.tools.TrashButton;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
-public class ToolbarPanel extends JPanel {
+public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridPanelListener {
 
-    private ArrayList<ToolbarButton> floors;
-    private ArrayList<ToolbarButton> structures;
-    private ArrayList<ToolbarButton> items;
-    private ArrayList<ToolbarButton> creatures;
+    private ArrayList<ToolbarButton> floors = new ArrayList<>();
+    private ArrayList<ToolbarButton> structures = new ArrayList<>();
+    private ArrayList<ToolbarButton> items = new ArrayList<>();
+    private ArrayList<ToolbarButton> creatures = new ArrayList<>();
+    private ArrayList<ToolbarListener> listeners = new ArrayList<>();
+    private ToolbarButton currentButton;
+    private boolean selectionActive = false;
 
     public ToolbarPanel() {
         setBackground(Theme.DARK_BACKGROUND_2);
-        add(new SwordButton());
-        IntStream.range(0,19).forEach(_ -> add(new EmptyButton()));
+        addButton(items, new SwordButton());
+        IntStream.range(0,19).forEach(_ -> addButton(items, new EmptyButton()));
+        addButton(items, new TrashButton());
+        renderButtons();
     }
 
-    public void addItem(ToolbarButton item) {
-        items.add(item);
+    public void renderButtons() {
+        floors.forEach(this::add);
+        structures.forEach(this::add);
+        items.forEach(this::add);
+        creatures.forEach(this::add);
     }
 
-    public void addStructure(ToolbarButton structure) {
-        structures.add(structure);
+    public void addButton(ArrayList<ToolbarButton> list, ToolbarButton item) {
+        item.addToolbarButtonListener(this);
+        list.add(item);
     }
 
-    public void addCreature(ToolbarButton creature) {
-        creatures.add(creature);
+    public void addToolbarListener(ToolbarListener listener) {
+        listeners.add(listener);
+    }
+
+    @Override
+    public void activateListeners() {
+        listeners.forEach(ToolbarListener::activateSelection);
+    }
+
+    @Override
+    public void deactivateListeners() {
+        listeners.forEach(ToolbarListener::deactivateSelection);
+    }
+
+    @Override
+    public void setCurrentButton(ToolbarButton button) {
+        this.currentButton = button;
+    }
+
+    @Override
+    public boolean getSelectionActive() {
+        return selectionActive;
+    }
+
+    @Override
+    public void setSelectionActive(boolean selectionActive) {
+        this.selectionActive = selectionActive;
+    }
+
+    @Override
+    public ImageIcon getActiveIcon() {
+        ImageIcon icon = currentButton.getOrigIcon();
+        if (icon == null)
+            return null;
+        return new ImageIcon(icon.getImage());
     }
 }

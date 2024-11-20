@@ -1,27 +1,28 @@
 package mapbuilder.templates;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
 
-public abstract class IconButton extends JButton implements MouseListener {
+public abstract class IconButton extends JButton {
 
-    private ImageIcon icon;
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // Not needed in subclasses
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // Not needed in subclasses
-    }
+    private ImageIcon origIcon;
+    private ImageIcon scaledIcon;
 
     public void setIcon(ImageIcon icon) {
-        this.icon = icon;
+        this.origIcon = icon;
+        this.scaledIcon = icon;
+    }
+
+    public ImageIcon getOrigIcon() {
+        return this.origIcon;
     }
 
     public void renderIcon() {
-        add(new JLabel(icon));
+        add(new JLabel(scaledIcon));
+    }
+
+    public void scaleIcon(int width, int height) {
+        Image scaledImage = origIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        this.scaledIcon = new ImageIcon(scaledImage);
     }
 }

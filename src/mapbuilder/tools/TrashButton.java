@@ -9,6 +9,7 @@ public class TrashButton extends ToolbarButton {
     public TrashButton() {
         super();
         setIcon(new ImageIcon("icons/trashcan_light.png"));
+        setToolTipText("Trash");
         renderIcon();
     }
 

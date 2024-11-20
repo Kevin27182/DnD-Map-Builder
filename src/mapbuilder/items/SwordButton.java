@@ -8,6 +8,7 @@ public class SwordButton extends ToolbarButton {
     public SwordButton() {
         super();
         setIcon(new ImageIcon("icons/gladius_light.png"));
+        setToolTipText("Sword");
         renderIcon();
     }
 }

@@ -6,5 +6,6 @@ public class EmptyButton extends ToolbarButton {
 
     public EmptyButton() {
         super();
+        setToolTipText("Empty Button");
     }
 }

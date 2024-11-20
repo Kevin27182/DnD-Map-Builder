@@ -8,15 +8,17 @@ import mapbuilder.templates.ToolbarButton;
 import mapbuilder.tools.TrashButton;
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridPanelListener {
 
-    private ArrayList<ToolbarButton> floors = new ArrayList<>();
-    private ArrayList<ToolbarButton> structures = new ArrayList<>();
-    private ArrayList<ToolbarButton> items = new ArrayList<>();
-    private ArrayList<ToolbarButton> creatures = new ArrayList<>();
-    private ArrayList<ToolbarButton> tools = new ArrayList<>();
-    private ArrayList<ToolbarListener> listeners = new ArrayList<>();
+    private final ArrayList<ToolbarButton> floors = new ArrayList<>();
+    private final ArrayList<ToolbarButton> structures = new ArrayList<>();
+    private final ArrayList<ToolbarButton> items = new ArrayList<>();
+    private final ArrayList<ToolbarButton> creatures = new ArrayList<>();
+    private final ArrayList<ToolbarButton> tools = new ArrayList<>();
+    private final ArrayList<ArrayList<ToolbarButton>> bins = new ArrayList<>() {{add(floors); add(structures); add(items); add(creatures); add(tools);}};
+    private final ArrayList<ToolbarListener> listeners = new ArrayList<>();
     private ToolbarButton currentButton;
     private boolean selectionActive = false;
 
@@ -28,12 +30,12 @@ public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridP
     }
 
     public void renderButtons() {
-        floors.forEach(this::add);
-        structures.forEach(this::add);
-        items.forEach(this::add);
-        creatures.forEach(this::add);
-        add(new ToolbarSeparator());
-        tools.forEach(this::add);
+        AtomicInteger counter = new AtomicInteger(0);
+        bins.forEach(bin -> {
+            bin.forEach(this::add);
+            if (counter.getAndIncrement() < bins.size()-1 & !bin.isEmpty())
+                add(new ToolbarSeparator());
+        });
     }
 
     public void addButton(ArrayList<ToolbarButton> list, ToolbarButton item) {

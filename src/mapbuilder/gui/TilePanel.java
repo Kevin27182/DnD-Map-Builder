@@ -8,7 +8,9 @@ public class TilePanel extends JPanel {
 
     private Entity entity;
     private ImageIcon icon;
+    private ImageIcon floor;
     private JLabel label = new JLabel();
+    private JLabel floorLabel = new JLabel();
     private int index;
 
     TilePanel() {
@@ -24,13 +26,28 @@ public class TilePanel extends JPanel {
         return this.index;
     }
 
+    public ImageIcon getFloor() {
+        return this.floor;
+    }
+
     public void setIcon(ImageIcon icon) {
-        this.icon = icon;
-        label.setIcon(icon);
-        add(label);
+        if (floor != null) {
+            this.icon = icon;
+            label.setIcon(icon);
+            add(label);
+        }
+    }
+
+    public void setFloor(ImageIcon floor) {
+        this.floor = floor;
+        label.setIcon(floor);
+        add(floorLabel);
     }
 
     public void clearIcon() {
-        remove(label);
+        if (icon != null)
+            remove(label);
+        else if (floor != null)
+            remove(floorLabel);
     }
 }

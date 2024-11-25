@@ -1,5 +1,6 @@
 package mapbuilder.gui;
 
+import mapbuilder.floors.StoneFloorButton;
 import mapbuilder.helpers.GridPanelListener;
 import mapbuilder.helpers.ToolbarButtonListener;
 import mapbuilder.helpers.ToolbarListener;
@@ -24,6 +25,7 @@ public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridP
 
     public ToolbarPanel() {
         setBackground(Theme.DARK_BACKGROUND_2);
+        addButton(floors, new StoneFloorButton());
         addButton(items, new SwordButton());
         addButton(tools, new TrashButton());
         renderButtons();

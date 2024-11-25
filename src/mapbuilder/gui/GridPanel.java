@@ -60,7 +60,14 @@ public class GridPanel extends JPanel implements ToolbarListener {
                     if (activeIcon != null) {
                         Image scaledImage = activeIcon.getImage().getScaledInstance(20,20,Image.SCALE_SMOOTH);
                         activeIcon.setImage(scaledImage);
-                        tile.setIcon(activeIcon);
+
+                        // Check if icon is a floor or entity icon.
+                        if (tile.getFloor() == null) {
+                            tile.setFloor(activeIcon);
+                        }
+                        else{
+                            tile.setIcon(activeIcon);
+                        }
                     }
 
                     // Update tile graphics

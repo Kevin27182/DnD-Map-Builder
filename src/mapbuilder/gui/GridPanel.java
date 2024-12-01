@@ -15,6 +15,7 @@ public class GridPanel extends JPanel implements ToolbarListener {
 
     public ArrayList<TilePanel> tiles = new ArrayList<>();
     private GridPanelListener listener;
+    private boolean placing = false;
 
     public GridPanel() {
         setBackground(Theme.DARK_BACKGROUND_0);
@@ -24,7 +25,7 @@ public class GridPanel extends JPanel implements ToolbarListener {
         final int numTiles = Theme.GRID_HEIGHT * Theme.GRID_WIDTH;
         AtomicInteger counter = new AtomicInteger(0);
         IntStream.range(0, numTiles).forEach(_ -> {
-            TilePanel tilePanel = new TilePanel();
+            TilePanel tilePanel = new TilePanel(this);
             tilePanel.setIndex(counter.getAndIncrement());
             tiles.add(tilePanel);
             add(tilePanel);
@@ -50,5 +51,13 @@ public class GridPanel extends JPanel implements ToolbarListener {
 
     public void addGridPanelListener(GridPanelListener listener) {
         this.listener = listener;
+    }
+
+    public boolean isPlacing() {
+        return placing;
+    }
+
+    public void setPlacing(boolean placing) {
+        this.placing = placing;
     }
 }

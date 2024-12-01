@@ -20,6 +20,9 @@ public class GridPanelMouseAdapter extends MouseAdapter {
     @Override
     public void mouseEntered(MouseEvent e) {
         tile.setBackground(Color.red);
+
+        if (tile.isPlacing())
+            placeIcon();
     }
 
     @Override
@@ -30,6 +33,22 @@ public class GridPanelMouseAdapter extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
 
+        // Notify grid that placing mode is active
+        tile.setPlacing(true);
+
+        // Place icon
+        placeIcon();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        tile.setPlacing(false);
+    }
+
+    // Place an icon onto the grid
+    private void placeIcon() {
+
+        // Clear existing icons
         tile.clearAllIcons();
 
         // If the icon is not null, scale the icon and set it

@@ -12,8 +12,10 @@ public class TilePanel extends JPanel {
     private final JLabel label = new JLabel();
     private final JLabel floorLabel = new JLabel();
     private int index;
+    private final GridPanel grid;
 
-    TilePanel() {
+    TilePanel(GridPanel grid) {
+        this.grid = grid;
         setBackground(Theme.DARK_BACKGROUND_1);
         setBorder(BorderFactory.createLineBorder(Theme.DARK_BACKGROUND_0));
         FlowLayout layout = new FlowLayout();
@@ -56,5 +58,13 @@ public class TilePanel extends JPanel {
     public void clearAllIcons() {
         remove(label);
         remove(floorLabel);
+    }
+
+    public void setPlacing(boolean placing) {
+        this.grid.setPlacing(placing);
+    }
+
+    public boolean isPlacing() {
+        return this.grid.isPlacing();
     }
 }

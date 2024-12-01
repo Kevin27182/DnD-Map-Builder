@@ -40,7 +40,7 @@ public class TilePanel extends JPanel {
 
     public void setFloor(ImageIcon floor) {
         this.floor = floor;
-        label.setIcon(floor);
+        floorLabel.setIcon(floor);
         add(floorLabel);
     }
 

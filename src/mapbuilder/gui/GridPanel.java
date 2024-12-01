@@ -1,12 +1,11 @@
 package mapbuilder.gui;
 
 import mapbuilder.helpers.GridPanelListener;
+import mapbuilder.helpers.GridPanelMouseAdapter;
 import mapbuilder.helpers.ToolbarListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,47 +37,7 @@ public class GridPanel extends JPanel implements ToolbarListener {
     @Override
     public void activateSelection() {
         for (TilePanel tile : tiles) {
-            tile.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    tile.setBackground(Color.red);
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    tile.setBackground(Theme.DARK_BACKGROUND_1);
-                }
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-
-                    tile.clearAllIcons();
-
-                    // If the icon is not null, scale the icon and set it
-                    if (!listener.isTrashSelected()) {
-
-                        // Get the current active element's icon
-                        ImageIcon activeIcon = listener.getActiveIcon();
-                        boolean isFloor = listener.isFloorSelected();
-                        int offset = isFloor ? 0 : -10;
-
-                        Image scaledImage = activeIcon.getImage().getScaledInstance(Theme.FLOOR_GRID_ICON_WIDTH + offset,Theme.FLOOR_GRID_ICON_HEIGHT + offset,Image.SCALE_SMOOTH);
-                        activeIcon.setImage(scaledImage);
-
-                        // Check if icon is a floor or entity icon.
-                        if (isFloor) {
-                            tile.setFloor(activeIcon);
-                        }
-                        else {
-                            tile.setIcon(activeIcon);
-                        }
-                    }
-
-                    // Update tile graphics
-                    tile.repaint();
-                    tile.revalidate();
-                }
-            });
+            tile.addMouseListener(new GridPanelMouseAdapter(tile, listener));
         }
     }
 

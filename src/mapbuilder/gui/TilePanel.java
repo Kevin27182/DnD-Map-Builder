@@ -1,8 +1,8 @@
 package mapbuilder.gui;
 
 import mapbuilder.templates.Entity;
-
 import javax.swing.*;
+import java.awt.*;
 
 public class TilePanel extends JPanel {
 
@@ -16,6 +16,10 @@ public class TilePanel extends JPanel {
     TilePanel() {
         setBackground(Theme.DARK_BACKGROUND_1);
         setBorder(BorderFactory.createLineBorder(Theme.DARK_BACKGROUND_0));
+        FlowLayout layout = new FlowLayout();
+        layout.setHgap(0);
+        layout.setVgap(0);
+        setLayout(layout);
     }
 
     public void setIndex(int index) {
@@ -49,5 +53,10 @@ public class TilePanel extends JPanel {
             remove(label);
         else if (floor != null)
             remove(floorLabel);
+    }
+
+    public void clearAllIcons() {
+        remove(label);
+        remove(floorLabel);
     }
 }

@@ -37,7 +37,9 @@ public class Theme {
     public static final int TOOLBAR_BUTTON_HEIGHT = 50;
     public static final int TOOLBAR_ICON_WIDTH = 40;
     public static final int TOOLBAR_ICON_HEIGHT = 40;
-    public static final int GRID_WIDTH = (WINDOW_WIDTH / 100) * 3;
-    public static final int GRID_HEIGHT = (WINDOW_HEIGHT / 100) * 3;
+    public static final int GRID_WIDTH = (WINDOW_WIDTH / 100) * 2;
+    public static final int GRID_HEIGHT = (WINDOW_HEIGHT / 100) * 2;
+    public static final int FLOOR_GRID_ICON_WIDTH = WINDOW_WIDTH / GRID_WIDTH;
+    public static final int FLOOR_GRID_ICON_HEIGHT = WINDOW_HEIGHT / GRID_HEIGHT;
     public static final Insets DEFAULT_INSETS = new Insets(DEFAULT_PADDING, DEFAULT_PADDING, DEFAULT_PADDING, DEFAULT_PADDING);
 }

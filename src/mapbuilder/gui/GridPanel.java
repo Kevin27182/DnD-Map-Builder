@@ -52,20 +52,24 @@ public class GridPanel extends JPanel implements ToolbarListener {
                 @Override
                 public void mousePressed(MouseEvent e) {
 
-                    // Get the current active element's icon
-                    ImageIcon activeIcon = listener.getActiveIcon();
-                    tile.clearIcon();
+                    tile.clearAllIcons();
 
                     // If the icon is not null, scale the icon and set it
-                    if (activeIcon != null) {
-                        Image scaledImage = activeIcon.getImage().getScaledInstance(20,20,Image.SCALE_SMOOTH);
+                    if (!listener.isTrashSelected()) {
+
+                        // Get the current active element's icon
+                        ImageIcon activeIcon = listener.getActiveIcon();
+                        boolean isFloor = listener.isFloorSelected();
+                        int offset = isFloor ? 0 : -10;
+
+                        Image scaledImage = activeIcon.getImage().getScaledInstance(Theme.FLOOR_GRID_ICON_WIDTH + offset,Theme.FLOOR_GRID_ICON_HEIGHT + offset,Image.SCALE_SMOOTH);
                         activeIcon.setImage(scaledImage);
 
                         // Check if icon is a floor or entity icon.
-                        if (tile.getFloor() == null) {
+                        if (isFloor) {
                             tile.setFloor(activeIcon);
                         }
-                        else{
+                        else {
                             tile.setIcon(activeIcon);
                         }
                     }

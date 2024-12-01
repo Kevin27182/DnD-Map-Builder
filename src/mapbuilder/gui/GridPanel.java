@@ -38,7 +38,8 @@ public class GridPanel extends JPanel implements ToolbarListener {
     @Override
     public void activateSelection() {
         for (TilePanel tile : tiles) {
-            tile.addMouseListener(new GridPanelMouseAdapter(tile, listener));
+            if (tile.getMouseListeners().length == 0)
+                tile.addMouseListener(new GridPanelMouseAdapter(tile, listener));
         }
     }
 

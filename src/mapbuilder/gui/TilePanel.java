@@ -9,8 +9,8 @@ public class TilePanel extends JPanel {
     private Entity entity;
     private ImageIcon icon;
     private ImageIcon floor;
-    private JLabel label = new JLabel();
-    private JLabel floorLabel = new JLabel();
+    private final JLabel label = new JLabel();
+    private final JLabel floorLabel = new JLabel();
     private int index;
 
     TilePanel() {
@@ -35,11 +35,9 @@ public class TilePanel extends JPanel {
     }
 
     public void setIcon(ImageIcon icon) {
-        if (floor != null) {
-            this.icon = icon;
-            label.setIcon(icon);
-            add(label);
-        }
+        this.icon = icon;
+        label.setIcon(icon);
+        add(label);
     }
 
     public void setFloor(ImageIcon floor) {

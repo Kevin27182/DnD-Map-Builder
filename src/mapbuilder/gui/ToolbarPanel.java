@@ -51,6 +51,11 @@ public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridP
     }
 
     @Override
+    public boolean isTrashSelected() {
+        return currentButton instanceof TrashButton;
+    }
+
+    @Override
     public boolean isFloorSelected() {
         return currentButton instanceof FloorButton;
     }

@@ -1,6 +1,7 @@
 package mapbuilder.gui;
 
 import mapbuilder.floors.StoneFloorButton;
+import mapbuilder.helpers.FloorButton;
 import mapbuilder.helpers.GridPanelListener;
 import mapbuilder.helpers.ToolbarButtonListener;
 import mapbuilder.helpers.ToolbarListener;
@@ -47,6 +48,11 @@ public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridP
 
     public void addToolbarListener(ToolbarListener listener) {
         listeners.add(listener);
+    }
+
+    @Override
+    public boolean isFloorSelected() {
+        return currentButton instanceof FloorButton;
     }
 
     @Override

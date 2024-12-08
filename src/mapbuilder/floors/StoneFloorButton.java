@@ -8,7 +8,7 @@ public class StoneFloorButton extends ToolbarButton implements FloorButton {
 
     public StoneFloorButton() {
         super();
-        setIcon(new ImageIcon("icons/stone_floor.png"));
+        setIcon(new ImageIcon("icons/stone_floor.jpeg"));
         setToolTipText("Stone Floor");
         renderIcon();
     }

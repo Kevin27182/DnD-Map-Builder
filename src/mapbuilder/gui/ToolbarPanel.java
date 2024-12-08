@@ -1,11 +1,19 @@
 package mapbuilder.gui;
 
-import mapbuilder.floors.StoneFloorButton;
+import mapbuilder.creatures.DemonButton;
+import mapbuilder.creatures.GhostButton;
+import mapbuilder.creatures.GoblinButton;
+import mapbuilder.creatures.MonsterButton;
+import mapbuilder.floors.*;
 import mapbuilder.helpers.FloorButton;
 import mapbuilder.helpers.GridPanelListener;
 import mapbuilder.helpers.ToolbarButtonListener;
 import mapbuilder.helpers.ToolbarListener;
-import mapbuilder.items.SwordButton;
+import mapbuilder.items.*;
+import mapbuilder.structures.HazardButton;
+import mapbuilder.structures.SpikeTrapButton;
+import mapbuilder.structures.StatueButton;
+import mapbuilder.structures.TripwireButton;
 import mapbuilder.templates.ToolbarButton;
 import mapbuilder.tools.TrashButton;
 import javax.swing.*;
@@ -26,9 +34,38 @@ public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridP
 
     public ToolbarPanel() {
         setBackground(Theme.DARK_BACKGROUND_2);
+
+        // Floors
         addButton(floors, new StoneFloorButton());
-        addButton(items, new SwordButton());
+        addButton(floors, new CanyonFloorButton());
+        addButton(floors, new StoneBricksFloorButton());
+        addButton(floors, new WoodenFloorButton());
+        addButton(floors, new DirtFloorButton());
+        addButton(floors, new MetalTileFloorButton());
+        addButton(floors, new WaterFloorButton());
+        addButton(floors, new LavaFloorButton());
         addButton(tools, new TrashButton());
+
+        // Structures
+        addButton(structures, new StatueButton());
+        addButton(structures, new SpikeTrapButton());
+        addButton(structures, new TripwireButton());
+        addButton(structures, new HazardButton());
+
+        // Items
+        addButton(items, new SwordButton());
+        addButton(items, new MagicItemButton());
+        addButton(items, new PotionButton());
+        addButton(items, new ChestButton());
+        addButton(items, new GoldButton());
+        addButton(items, new KeyButton());
+
+        // Creatures
+        addButton(creatures, new MonsterButton());
+        addButton(creatures, new GoblinButton());
+        addButton(creatures, new GhostButton());
+        addButton(creatures, new DemonButton());
+
         renderButtons();
     }
 

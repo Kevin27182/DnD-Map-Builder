@@ -10,10 +10,7 @@ import mapbuilder.helpers.GridPanelListener;
 import mapbuilder.helpers.ToolbarButtonListener;
 import mapbuilder.helpers.ToolbarListener;
 import mapbuilder.items.*;
-import mapbuilder.structures.HazardButton;
-import mapbuilder.structures.SpikeTrapButton;
-import mapbuilder.structures.StatueButton;
-import mapbuilder.structures.TripwireButton;
+import mapbuilder.structures.*;
 import mapbuilder.templates.ToolbarButton;
 import mapbuilder.tools.TrashButton;
 import javax.swing.*;
@@ -47,6 +44,8 @@ public class ToolbarPanel extends JPanel implements ToolbarButtonListener, GridP
         addButton(tools, new TrashButton());
 
         // Structures
+        addButton(structures, new StairsUpButton());
+        addButton(structures, new StairsDownButton());
         addButton(structures, new StatueButton());
         addButton(structures, new SpikeTrapButton());
         addButton(structures, new TripwireButton());

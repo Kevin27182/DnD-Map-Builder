@@ -1,12 +1,10 @@
 package mapbuilder.gui;
 
-import mapbuilder.templates.Entity;
 import javax.swing.*;
 import java.awt.*;
 
 public class TilePanel extends JPanel {
 
-    private Entity entity;
     private ImageIcon icon;
     private ImageIcon floor;
     private final JLabel label = new JLabel();
